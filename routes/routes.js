@@ -18,22 +18,24 @@ api.post('/', (req, res) => {
   try {
       const { text } = req.body;
       
-      if (text === "") return res.status(400).send('Request not valid');
+      if (text === "") return res.send(
+        { "response_type": "in_channel","text":'Request not valid'})
 
       if(isNaN(parseInt(text))){
         return res.send({
-          "response_type": "in_channel",
-          "text": parse(text)
+          "response_type": "in_channel","text": parse(text)
         })
     }
 
-    return res.send({
-      "response_type": "in_channel",
-      "text": `${stringify(parseInt(text))}`
+    return res.send({"response_type": "in_channel", "text": `${stringify(parseInt(text))}`
 })
     
   } catch (error) {
-    return res.send(JSON.stringify(error.message))
+    return res.send(
+      {
+        "response_type": "in_channel", "text": JSON.stringify(error.message)
+      }
+    )
   }
 
   }
