@@ -20,12 +20,12 @@ api.post('/', (req, res) => {
       
       if (text === "") return res.send({"response_type": "in_channel","text":'Request not valid'})
       
-      if(text === 'version') return res.send({"text":`${pjson.version}`})
+      if(text === 'version') return res.send({"response_type": "in_channel","text":`${pjson.version}`})
 
-      if(text === 'help') return res.send({"text":`Enter the Romanian or Arabic number you want to translate next to the /Roman-Numerals command`})
+      if(text === 'help') return res.send({"response_type": "in_channel","text":`Enter the Romanian or Arabic number you want to translate next to the /Roman-Numerals command`})
 
       if(isNaN(parseInt(text))) return res.send({"response_type": "in_channel","text": parse(text)})
-      
+
       return res.send({"response_type": "in_channel", "text": `${stringify(parseInt(text))}`
 })
     
