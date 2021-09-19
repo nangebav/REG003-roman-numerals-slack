@@ -18,16 +18,15 @@ api.post('/', (req, res) => {
   try {
       const { text } = req.body;
       
-      if (text === "") return res.send(
-        { "response_type": "in_channel","text":'Request not valid'})
+      if (text === "") return res.send({"response_type": "in_channel","text":'Request not valid'})
+      
+      if(text === 'version') return res.send({"text":`${pjson.version}`})
 
-      if(isNaN(parseInt(text))){
-        return res.send({
-          "response_type": "in_channel","text": parse(text)
-        })
-    }
+      if(text === 'help') return res.send({"text":`Enter the Romanian or Arabic number you want to translate next to the /Roman-Numerals command`})
 
-    return res.send({"response_type": "in_channel", "text": `${stringify(parseInt(text))}`
+      if(isNaN(parseInt(text))) return res.send({"response_type": "in_channel","text": parse(text)})
+      
+      return res.send({"response_type": "in_channel", "text": `${stringify(parseInt(text))}`
 })
     
   } catch (error) {
