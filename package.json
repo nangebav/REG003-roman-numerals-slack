@@ -4,7 +4,7 @@
   "description": "* [1. Preámbulo](#1-preámbulo)\r * [2. Resumen del proyecto](#2-resumen-del-proyecto)\r * [3. Objetivos de aprendizaje](#3-objetivos-de-aprendizaje)\r * [4. Consideraciones generales](#4-consideraciones-generales)\r * [5. Criterios de aceptación mínimos del proyecto](#5-criterios-de-aceptación-mínimos-del-proyecto)\r * [6. Pistas, tips y lecturas complementarias](#6-pistas-tips-y-lecturas-complementarias)",
   "main": "indexs.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/api.test.js",
     "start": "node index.js"
   },
   "repository": {
@@ -20,6 +20,8 @@
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "roman-numerals": "github:nangebav/REG003-roman-numerals"
+    "mocha": "^9.1.1",
+    "roman-numerals": "github:nangebav/REG003-roman-numerals",
+    "supertest": "^6.1.6"
   }
 }

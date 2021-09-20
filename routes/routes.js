@@ -32,7 +32,8 @@ api.post('/', (req, res) => {
   } catch (error) {
     return res.send(
       {
-        "response_type": "in_channel", "text": JSON.stringify(error.message)
+        "response_type": "in_channel",
+         "text": `${error.message}`
       }
     )
   }
@@ -41,6 +42,3 @@ api.post('/', (req, res) => {
 );
 
 module.exports = api;
-
-
-console.log(parseInt('4'));
