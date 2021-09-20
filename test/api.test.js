@@ -19,11 +19,10 @@ const testValues = [
     ['3999', 'MMMCMXCIX'],
   ];
 
-
 // TEST GET
 
 describe('GET /', () => {
-    it('respond with json containing a list of all users', (done) => {
+    it('Respond with json containing a list of all users', (done) => {
       request(app)
         .get('/')
         .set('Accept', 'application/json')
@@ -37,7 +36,7 @@ describe('GET /', () => {
 
  describe('POST /', () => {
 
-    it('respond with json containing a list of all users', (done) => {
+    it('Respond: Request not valid', (done) => {
         request(app)
           .post('/')
           .send({"text": ""})
@@ -48,7 +47,19 @@ describe('GET /', () => {
             'response_type': 'in_channel',
             'text': 'Request not valid'
         })
-          
+      });
+
+      it('Respond: Unknown roman numeral', (done) => {
+        request(app)
+          .post('/')
+          .send({"text": "abdd"})
+          .set('Accept', 'application/json')
+          .expect('Content-Type', /json/)
+          .expect(200, done)
+          .expect({
+            'response_type': 'in_channel',
+            'text': 'Unknown roman numeral'
+        })
       });
     
     testValues.forEach(([expected, input]) => {
